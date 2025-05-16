@@ -72,7 +72,7 @@ funcao_quadratica/
 │   └── estilo.css      # Estilos e animações
 ├── js/
 │   └── calculadora.js  # Lógica da aplicação
-├── assets/             # Imagens e recursos
+├── documentação/       # Fluxograma e Favicon
 └── README.md           # Documentação
 ```
 
