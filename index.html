@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Função Quadrática</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="shortcut icon" href="documentação/favicon-calculadora.png"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Função Quadrática</h1>
+        
+        <div class="forma-padrao">
+            <h2>Função na forma: <span class="destaque-equacao">f(x) = ax² + bx + c</span></h2>
+        </div>
+
+        <form class="formulario" id="form-funcao">
+            <div class="entrada-coeficientes">
+                <div class="campo">
+                    <label for="coeficienteA">Coeficiente a:</label>
+                    <input type="number" id="coeficienteA" step="any" value="1" required>
+                </div>
+                <div class="campo">
+                    <label for="coeficienteB">Coeficiente b:</label>
+                    <input type="number" id="coeficienteB" step="any" value="0" required>
+                </div>
+                <div class="campo">
+                    <label for="coeficienteC">Coeficiente c:</label>
+                    <input type="number" id="coeficienteC" step="any" value="0" required>
+                </div>
+                <button type="submit" class="botao-calcular">Calcular</button>
+            </div>
+        </form>
+
+        <div class="resultado" id="resultados">
+            <div class="equacao" id="equacao">f(x) = x²</div>
+            
+            <div class="info-painel">
+                <div class="painel-esquerdo">
+                    <div class="item-resultado">
+                        <h3>Discriminante (Δ):</h3>
+                        <p id="discriminante">0</p>
+                    </div>
+                    <div class="item-resultado">
+                        <h3>Raízes:</h3>
+                        <p id="raizes">x = 0</p>
+                    </div>
+                    <div class="item-resultado">
+                        <h3>Vértice:</h3>
+                        <p id="vertice">(0, 0)</p>
+                    </div>
+                    <div class="item-resultado">
+                        <h3>Concavidade:</h3>
+                        <p id="concavidade">Para cima</p>
+                    </div>
+                </div>
+                
+                <div class="painel-direito">
+                    <div class="item-resultado">
+                        <h3>Intersecção com eixo Y:</h3>
+                        <p id="interceptoY">(0, 0)</p>
+                    </div>
+                    <div class="item-resultado">
+                        <h3>Ponto de Máximo/Mínimo:</h3>
+                        <p id="pontoMaxMin">Mínimo em y = 0</p>
+                    </div>
+                    <div class="item-resultado">
+                        <h3>Crescimento/Decrescimento:</h3>
+                        <p id="crescimentoDecrescimento">Decresce para x < 0 e cresce para x > 0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="formas-adicionais">
+                <div class="item-resultado forma-especial">
+                    <h3>Forma Canônica:</h3>
+                    <p id="formaCanonica">f(x) = x²</p>
+                </div>
+                <div class="item-resultado forma-especial">
+                    <h3>Forma Fatorada:</h3>
+                    <p id="formaFatorada">f(x) = x²</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="secao-passos">
+            <div class="passo-a-passo">
+                <h3>Passo a Passo da Resolução</h3>
+                <div class="passos-container" id="passosResolucao">
+                    <!-- Passos serão inseridos via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-delta">
+            <div class="explicacao-delta">
+                <h3>Entendendo o Discriminante (Δ)</h3>
+                <div class="casos-delta">
+                    <div class="caso-delta" id="deltaPositivo">
+                        <h4>Δ > 0 (Positivo)</h4>
+                        <p>Duas raízes reais distintas</p>
+                        <div class="ilustracao-grafico">Parábola cortando o eixo X em dois pontos</div>
+                    </div>
+                    <div class="caso-delta destaque" id="deltaZero">
+                        <h4>Δ = 0 (Zero)</h4>
+                        <p>Uma raiz real dupla</p>
+                        <div class="ilustracao-grafico">Parábola tangenciando o eixo X</div>
+                    </div>
+                    <div class="caso-delta" id="deltaNegativo">
+                        <h4>Δ < 0 (Negativo)</h4>
+                        <p>Nenhuma raiz real</p>
+                        <div class="ilustracao-grafico">Parábola sem intersecção com o eixo X</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="calculo-fx">
+            <h3>Cálculo de f(x) específico</h3>
+            <div class="campo-fx">
+                <label for="valorX">Valor de x:</label>
+                <input type="number" id="valorX" step="any" placeholder="Digite um valor">
+                <button id="calcularFx" class="botao-calcular">Calcular f(x)</button>
+            </div>
+            <div class="resultado-fx">
+                <p id="resultadoFx">Resultado aparecerá aqui</p>
+            </div>
+        </div>
+
+        <div class="grafico-container">
+            <canvas id="graficoParabola"></canvas>
+            <button id="exportarGrafico" class="botao-exportar">Exportar Gráfico</button>
+        </div>
+
+        <div class="controles-grafico">
+            <div class="controle-zoom">
+                <label for="zoomRange">Zoom:</label>
+                <input type="range" id="zoomRange" min="1" max="20" value="10">
+            </div>
+            <div class="controle-cor">
+                <label for="corGrafico">Cor da parábola:</label>
+                <input type="color" id="corGrafico" value="#4361ee">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/calculadora.js"></script>
+</body>
+</html>
